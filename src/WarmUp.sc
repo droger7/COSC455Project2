@@ -6,9 +6,18 @@
 //1.
 
 def prime(n : Int) : Boolean = {
-  if(n == 1) false
-  else
-    (2 until n) forall (n % _ != 0)
+  primeHelper(n, 2)
+}
+
+def primeHelper (n : Int, locate : Int) : Boolean = {
+  locate >= n match {
+    case true => true
+    case false =>
+      n % locate == 0 match {
+        case true => false
+        case false => primeHelper(n, locate+1)
+      }
+  }
 }
 
 //test 1
@@ -16,7 +25,7 @@ var number : Int = 374
 prime(number)
 
 //2.
-
+//couldn't think of a way to use case matching
 def twinprimes(n : Int, n2: Int) : Boolean = {
   if(prime(n) && prime(n2)) {
     if ((n - n2 == 2) || (n - n2 == -2)) {
@@ -53,34 +62,29 @@ twinprimeslist(50)
 
 //4.
 
-def goldbach(n: Int): Unit = {
-  //error checking
-  if ((n > 2) && (n % 2 == 0)) {
-    var i: Int = 0
-    var j: Int = n
-    goldhelp(n, i, j)
-  }
-  else
-    println("Integer was not above 2 or not positive")
-}
-
-def goldhelp(n: Int, i: Int, j: Int): Unit = {
-  if (prime(j) && prime(i)) {
-    if (!(j + i == n)) {
-      var alpha = i + 1
-      var beta = j - 1
-      goldhelp(n, alpha, beta)
-    }
-    else
-      println( i + " + " + j + " = " + n)
-  }
-  else {
-    var alpha = i + 1
-    var beta = j - 1
-    goldhelp(n, alpha, beta)
+def goldbach(n : Int) : Unit = {
+  (n >= 2) && (n % 2 == 0) match {
+    case false => Nil
+    case true =>
+      goldbachHelper(n, n-2) match {
+        case Nil =>
+        case head :: tail => println(tail.head + " + " + head + " = " + n + " ")
+      }
   }
 }
 
+def goldbachHelper(n : Int, locate : Int) : List[Int] = {
+  locate >= 1 match {
+    case false => Nil
+    case true =>
+      prime(locate) && locate <= n match {
+        case false => goldbachHelper(n, locate - 1)
+        case true => locate::goldbachHelper(n-locate, n-locate)
+      }
+  }
+}
+
+//test 4
 goldbach(28)
 
 
