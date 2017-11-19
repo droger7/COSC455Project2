@@ -25,7 +25,7 @@ var number : Int = 374
 prime(number)
 
 //2.
-//couldn't think of a way to use case matching
+//couldn't think of a way to use pattern matching
 def twinprimes(n : Int, n2: Int) : Boolean = {
   if(prime(n) && prime(n2)) {
     if ((n - n2 == 2) || (n - n2 == -2)) {
