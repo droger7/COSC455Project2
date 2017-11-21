@@ -1,7 +1,7 @@
+// COSC 455 - Programming Languages: Implementation and Design
+// Project 2
 
-//********************************************//
-//************   David Rogers   **************//
-//********************************************//
+// NAME: David Rogers>
 
 //1.
 
