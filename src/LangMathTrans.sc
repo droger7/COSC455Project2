@@ -7,9 +7,9 @@ def go(list : List[String]) : Unit = {
   println("Translation:")
   println(transDisp(translate(list)))
   println("Addition:")
-  println(addDisp(translate(list)) + " = " + add(translate(list)) + " ")
+  println(addDisp(translate(list)) + " = " + add(translate(list)))
   println("Multiplication:")
-  println(multDisp(translate(list)) + " = " + multiply(translate(list)) + " ")
+  println(multDisp(translate(list)) + " = " + multiply(translate(list)))
 }
 
 def add(list : List[Int]) : Int = {
