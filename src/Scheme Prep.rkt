@@ -25,9 +25,9 @@ truecount
 hundreds?
 
 
-(define (collatz num)
-  (cond ((= num 1) '())
-        ((odd? num) (cons (+ (* num 3) 1) (collatz (+ (* num 3) 1))))
-        ((even? num) (cons (/ num 2) (collatz (/ num 2))))))
+(define (collatz n)
+  (cond ((= n 1) '())
+        ((odd? n) (cons (+ (* n 3) 1) (collatz (+ (* n 3) 1))))
+        ((even? n) (cons (/ n 2) (collatz (/ n 2))))))
 
 (collatz 9)
