@@ -83,15 +83,15 @@ def binaryAddition(pList: List[Int], qList: List[Int]) = {
 }
 
 def binarySubtraction(pList: List[Int], qList: List[Int]): List[Int] = {
-  1 :: binaryAddition(pList, twosComplement(qList)).drop(2)
+  val signedBit : Int = 1
+  signedBit :: binaryAddition(pList, twosComplement(qList)).drop(pList.length - qList.length)
 
 }
 
 def twosComplement(aList : List[Int]) : List[Int] = {
-  val twos : List[Int] = List(1)
-  binaryAddition(convertBooleanListToIntList(convertIntListToBooleanList(aList).map(b => !b)), twos)
+  val signed : List[Int] = List(1)
+  binaryAddition(convertBooleanListToIntList(convertIntListToBooleanList(aList).map(b => !b)), signed)
 }
-
 
 
 
