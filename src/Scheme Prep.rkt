@@ -1,5 +1,6 @@
 #lang racket
 
+;1
 (define first (lambda (x) (car x)))
 (define second (lambda (x) (cadr x)))
 (define third (lambda (x) (caddr x)))
@@ -12,22 +13,25 @@
 (fourth family)
 (fifth family)
 
-(define truecount (count identity '(#f #f #t #t #f #t)))
+;2
+(define (truecount alist)(count identity alist))
 
-truecount
+(truecount '(#t #t #f #f #t))
 
+;3
 (define (squarelist alist)(map (lambda (x) (* x x)) alist))
 
 (squarelist '(1 2 3 4 5))
 
-(define hundreds?(filter (lambda (x) (> x 100)) '(312 9 502 8 232 4 7)))
+;4
+(define (hundreds? alist)(filter (lambda (x) (> x 100)) alist))
 
-hundreds?
+(hundreds? '(312 99 502 18 232 56 7))
 
-
+;5
 (define (collatz n)
-  (cond ((= n 1) '())
+  (cond ((eq? n 1) '())
         ((odd? n) (cons (+ (* n 3) 1) (collatz (+ (* n 3) 1))))
         ((even? n) (cons (/ n 2) (collatz (/ n 2))))))
 
-(collatz 9)
+(collatz 69)
